@@ -1,6 +1,6 @@
 # Google Noto Animation Scraper
 
-Per the [the FAQ section](https://googlefonts.github.io/noto-emoji-animation/documentation) of [Google Noto's Animated Emojis](https://googlefonts.github.io/noto-emoji-animation/), 
+Per the the FAQ section of [Google Noto's Animated Emojis](https://googlefonts.github.io/noto-emoji-animation/), 
   > How do I download everything?
   >  
   > Currently, there is no way to download the whole set — the world is not ready for that many simultaneously dancing emoji.  
