@@ -18,6 +18,7 @@ driver = webdriver.Chrome(service= service, options=options)
 
 driver.get('https://googlefonts.github.io/noto-emoji-animation/')
 time.sleep(3)
+print(f"Executing driver...")
 driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
 time.sleep(10)
 page = driver.page_source
@@ -29,11 +30,13 @@ elements = result.find_all('button', class_ = "is-svg ng-star-inserted")
 
 file = open('emoji-lotties.csv', 'w')
 fields = ["name", "svg","lottie"]
+
 writer = csv.writer(file, lineterminator='\n')
 
+print(f"Opening file... ")
 writer.writerow(fields)
 
-for element in elements:
+for number,element in enumerate(elements):
     src = element.find('img')
     label = src.get('src')
     location = label.strip()
@@ -42,7 +45,7 @@ for element in elements:
     if (index >= 0):
         location = location[0:index];
     name = element.find('span', class_ = 'icon-name mat-caption')
-    print(f"{name.text.strip()}: ")
+    print(f"[{number +1}/{len(elements)}] {name.text.strip()}: ")
     lottie = 'https://fonts.gstatic.com/s/e/notoemoji/latest/{}/lottie.json'.format(location)
     print(f"Writing {name.text.strip()} lottie: {lottie}...")
     svg = 'https://fonts.gstatic.com/s/e/notoemoji/latest/{}/emoji.svg'.format(location)
@@ -57,7 +60,8 @@ for element in elements:
     writer.writerow(["{}.json".format(name.text.strip()), svg, lottie])
     print(f"{name.text.strip()} Successfully Scraped.")
 
-
+print(f"Closing file ... ")
 file.close()
 
+print(f"Closing script ... ")
 driver.quit()
