@@ -55,6 +55,7 @@ for element in elements:
 ################################################################
 
     writer.writerow(["{}.json".format(name.text.strip()), svg, lottie])
+    print(f"{name.text.strip()} Successfully Scraped.")
 
 
 file.close()
