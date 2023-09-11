@@ -1,3 +1,4 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -36,6 +37,9 @@ writer = csv.writer(file, lineterminator='\n')
 print(f"Opening file... ")
 writer.writerow(fields)
 
+output_folder_svg = 'svg_files'
+os.makedirs(output_folder, exist_ok=True)
+
 for number,element in enumerate(elements):
     src = element.find('img')
     label = src.get('src')
@@ -50,15 +54,19 @@ for number,element in enumerate(elements):
     print(f"Writing {name.text.strip()} lottie: {lottie}...")
     svg = 'https://fonts.gstatic.com/s/e/notoemoji/latest/{}/emoji.svg'.format(location)
     print(f"Writing {name.text.strip()} svg: {svg}...")
-    r = requests.get(lottie, allow_redirects=True)
+    r = requests.get(svg, allow_redirects=True)
 
 ################################################################
 # Uncomment the following line to download the json files to directory of script
-    #open('{}.json'.format(name.text.strip()), 'wb').write(r.content)
+    #open('{}.svg'.format(name.text.strip()), 'wb').write(r.content)
 ################################################################
 
     writer.writerow(["{}.json".format(name.text.strip()), svg, lottie])
     print(f"{name.text.strip()} Successfully Scraped.")
+    print(f"Saving {name.text.strip()}")
+    svg_filename = os.path.join(output_folder, '{}.svg'.format(name.text.strip()))
+    open(svg_filename, 'wb').write(r.content)
+    print(f"Saved {name.text.strip()}")
 
 print(f"Closing file ... ")
 file.close()
