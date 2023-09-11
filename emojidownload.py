@@ -42,8 +42,11 @@ for element in elements:
     if (index >= 0):
         location = location[0:index];
     name = element.find('span', class_ = 'icon-name mat-caption')
+    print(f"{name.text.strip()}: ")
     lottie = 'https://fonts.gstatic.com/s/e/notoemoji/latest/{}/lottie.json'.format(location)
+    print(f"Writing {name.text.strip()} lottie: {lottie}...")
     svg = 'https://fonts.gstatic.com/s/e/notoemoji/latest/{}/emoji.svg'.format(location)
+    print(f"Writing {name.text.strip()} svg: {svg}...")
     r = requests.get(lottie, allow_redirects=True)
 
 ################################################################
