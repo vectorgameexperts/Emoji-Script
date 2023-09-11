@@ -13,11 +13,13 @@ We challenge that statement as the harbingers of a new world order. So we made a
 
 ### Requirements
 
-- ChromeDriver/Gecko. (Chrome) Instructions can be found [here](https://pypi.org/project/chromedriver-autoinstaller/).
+- ChromeDriver/Gecko. Download a compatible version of chromedriver from [here](https://googlechromelabs.github.io/chrome-for-testing/) and replace the `chromedriver.exe` with your version. 
+  
 - Python packages
   ```shell
   pip install selenium
   pip install BeautifulSoup4
+  pip install lxml
   pip install requests
   ```
 

@@ -4,10 +4,18 @@ from selenium import webdriver
 import time
 import csv
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+
+#for newer versions of chrome, replace with your version of chromedriver
+service = Service(executable_path='./chromedriver.exe')
 
 options = Options()
-options.headless = True
-driver = webdriver.Chrome(options=options)
+options.add_argument('--headless')
+
+# you can replace this line with `driver = webdriver.Chrome(options=options)` if using chromedriver-autoinstaller
+driver = webdriver.Chrome(service= service, options=options)
+
+
 driver.get('https://googlefonts.github.io/noto-emoji-animation/')
 time.sleep(3)
 driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
