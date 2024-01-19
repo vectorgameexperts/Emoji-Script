@@ -1,11 +1,11 @@
 # Google Noto Animation Scraper
 
-Per the the FAQ section of [Google Noto's Animated Emojis](https://googlefonts.github.io/noto-emoji-animation/), 
+Per the the FAQ section of [Google Noto's Animated Emojis](https://googlefonts.github.io/noto-emoji-animation/),
   > How do I download everything?
-  >  
-  > Currently, there is no way to download the whole set — the world is not ready for that many simultaneously dancing emoji.  
+  >
+  > Currently, there is no way to download the whole set — the world is not ready for that many simultaneously dancing emoji.
 
-We challenge that statement as the harbingers of a new world order. So we made a script to generate a CSV to the file names and download links.
+This is a script to make the world ready.
 
 [Just want the CSV?](emoji-lotties.csv)
 
@@ -13,18 +13,20 @@ We challenge that statement as the harbingers of a new world order. So we made a
 
 ### Requirements
 
-- ChromeDriver/Gecko. Download a compatible version of chromedriver from [here](https://googlechromelabs.github.io/chrome-for-testing/) and replace the `chromedriver.exe` with your version. 
-  
-- Python packages
+- ChromeDriver/Gecko. Download a compatible version of chromedriver from [here](https://googlechromelabs.github.io/chrome-for-testing/) and make the driver available in your `$PATH`.
+
+- Scrape
+
+  If you want a fresh list, and not [the one we already compiled for you](emoji-lotties.csv):
+
   ```shell
-  pip install selenium
-  pip install BeautifulSoup4
-  pip install lxml
-  pip install requests
+  pip install -r requirements.txt
+  python3 scrape.py
   ```
 
-### Execute
+- Download only
 
-```shell
-python3 emojidownload.py
-```
+  ```shell
+  pip install -r requirements.txt
+  python3 download.py
+  ```
